@@ -1,27 +1,28 @@
 var scene, camera, renderer, controls;
 
 function resize(mesh_to_resize) {
-        'use strict';
-        var length, width, height;
-        length = document.getElementById('length');
-        width = document.getElementById('width');
-        height = document.getElementById('height');
-        length.value = 30;
-        width.value = 10;
-        height.value = 10;
-        length.addEventListener('change', function() {
-            mesh_to_resize.scale.set(length.value / 100, height.value /
-                100, width.value / 100);
-        });
-        width.addEventListener('change', function() {
-            mesh_to_resize.scale.set(length.value / 100, height.value /
-                100, width.value / 100);
-        });
-        height.addEventListener('change', function() {
-            mesh_to_resize.scale.set(length.value / 100, height.value /
-                100, width.value / 100);
-        });
-    }
+    'use strict';
+    var dimensionList = ['length', 'width', 'height'];
+    for (dimension in dimensionList) {
+        var dimension = document.getElementById(dimension);
+        })
+    var length, width, height;
+    length.value = 30;
+    width.value = 10;
+    height.value = 10;
+    length.addEventListener('change', function() {
+        mesh_to_resize.scale.set(length.value / 100, height.value /
+            100, width.value / 100);
+    });
+    width.addEventListener('change', function() {
+        mesh_to_resize.scale.set(length.value / 100, height.value /
+            100, width.value / 100);
+    });
+    height.addEventListener('change', function() {
+        mesh_to_resize.scale.set(length.value / 100, height.value /
+            100, width.value / 100);
+    });
+}
     /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 var saveAs = saveAs || function(e) {
     "use strict";
@@ -224,13 +225,11 @@ function init() {
         resize(mesh);
     });
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    $(document).ready(function() {
         var downloadButton;
         downloadButton = document.getElementById('download');
         downloadButton.addEventListener('click', function() {
             saveSTL(scene, "ninelivesForearm")
         });
-    });
 }
 
 function animate() {
